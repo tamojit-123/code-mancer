@@ -1,6 +1,6 @@
 import ChatThinking from "@/components/ChatThinking";
 import React from "react";
-import getReactMarkdown from "@/utils/displayUtils";
+import CustomCodeMarkDown from "@/components/CustomCodeMarkDown";
 
 const ChatBotBody = ({
   chatContainerRef,
@@ -42,10 +42,16 @@ const ChatBotBody = ({
                   <>
                     <b>Summary:</b> {message.structured.summary}
                     <br />
-                    {getReactMarkdown(setCopied, index, copied, message)}
+                    <CustomCodeMarkDown
+                      {...{ setCopied, index, copied, message }}
+                    />
                   </>
                 ) : (
-                  <>{getReactMarkdown(setCopied, index, copied, message)}</>
+                  <>
+                    <CustomCodeMarkDown
+                      {...{ setCopied, index, copied, message }}
+                    />
+                  </>
                 )}
                 {message.isError && <div className="error-message">Error</div>}
               </div>
