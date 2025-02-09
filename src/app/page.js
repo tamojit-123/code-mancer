@@ -1,19 +1,17 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import geminiApiService from "@/pages/api/modelApiService";
 import ChatBotHeader from "@/components/ChatBotHeader";
 import ChatBotBody from "@/components/ChatBotBody";
 import ChatBotInput from "@/components/ChatBotInput";
-
-
-
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(null); // Store the copied block index
+  const [api, setApi] = useState(null);
   const chatContainerRef = useRef(null);
 
   const sendMessage = async () => {
@@ -33,20 +31,24 @@ export default function Home() {
     }
   }, [messages]);
 
+  const apiKey = useMemo(() => {}, []);
+
   return (
     <div className="flex flex-col h-screen bg-gray-100">
-      <ChatBotHeader/>
+      <ChatBotHeader />
 
-      <ChatBotBody {...{
-        chatContainerRef,
-        messages,
-        setCopied,
-        copied,
-        loading,
-      }}/>
+      <ChatBotBody
+        {...{
+          chatContainerRef,
+          messages,
+          setCopied,
+          copied,
+          loading,
+        }}
+      />
 
       {/* Chat Input */}
-      <ChatBotInput {...{input, setInput, sendMessage}} />
+      <ChatBotInput {...{ input, setInput, sendMessage }} />
     </div>
   );
 }
