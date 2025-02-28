@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import {getGeminiKey} from "@/components/utils";
+import { getGeminiKey } from "@/components/utils";
 
 // Load environment variables (install dotenv if needed: `npm install dotenv`)
 require("dotenv").config(); //optional if next.config.js already has env loading

@@ -39,7 +39,7 @@ export default function Home() {
     console.log("Saving text:", text);
     alert(text);
     setSavedText(text); // For this example, just save it to state.
-    getGeminiKey(text);
+    getGeminiKey(savedText);
   };
 
   // const apiKey = useMemo(() => {}, []);
