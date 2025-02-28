@@ -2,7 +2,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { FiCopy, FiCheck } from "react-icons/fi";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { materialOceanic } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const CustomCodeMarkDown = ({ setCopied, index, copied, message }) => {
   const handleCopy = async (text, index) => {
@@ -40,8 +40,12 @@ const CustomCodeMarkDown = ({ setCopied, index, copied, message }) => {
                     <FiCopy />
                   )}
                 </button>
-                <div className="pt-8">
-                  <SyntaxHighlighter language={match[1]} style={materialDark}>
+                <div className="p-1">{match[1]}</div>
+                <div className="pt-1">
+                  <SyntaxHighlighter
+                    language={match[1]}
+                    style={materialOceanic}
+                  >
                     {codeText}
                   </SyntaxHighlighter>
                 </div>
